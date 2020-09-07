@@ -8,7 +8,6 @@ import sys
 
 _ = lambda s: s
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUBLIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'media'))
 APPS_PATH = os.path.abspath(os.path.join(BASE_DIR, '..', 'apps'))
@@ -32,8 +31,16 @@ DJANGO_APPS = ['django.contrib.admin',
                'django.contrib.messages',
                'django.contrib.staticfiles',
                ]
-EXTERNAL_APPS = []
-PROJECT_APPS = []
+
+EXTERNAL_APPS = [
+    'rest_framework.authtoken',
+    'drf_yasg',
+]
+
+PROJECT_APPS = [
+    'account',
+    'authorization'
+]
 
 # Application definition
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + PROJECT_APPS
@@ -86,6 +93,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'account.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation'
@@ -138,7 +146,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-
 # RestFramework settings
 REST_DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
 
@@ -154,8 +161,13 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
-    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
+    'DEFAULT_VERSIONING_CLASS':
+        'rest_framework.versioning.AcceptHeaderVersioning',
     'ALLOWED_VERSIONS': ['1.0'],
     'DEFAULT_VERSION': '1.0',
     'DATETIME_FORMAT': REST_DATETIME_FORMAT,
 }
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.eggs.Loader',
+)

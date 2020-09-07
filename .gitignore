@@ -98,3 +98,5 @@ dmypy.json
 .idea/
 
 _dockerfiles/*/local.env
+
+media/
