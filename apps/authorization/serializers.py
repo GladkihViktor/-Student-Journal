@@ -20,7 +20,7 @@ def authenticate(**credentials) -> Optional[User]:
 
 
 class TokenSerializer(serializers.Serializer):
-    """Tokem serializer.
+    """Token serializer.
     Validate email and password and return token"""
     
     token = serializers.CharField(label=_("token"), read_only=True)

@@ -9,6 +9,19 @@ from utils.models import BaseMixin
 class UserManager(AbstractUserManager):
     """User manager."""
     
+    def create_student(self,email: str, password: str, first_name: str,
+                    second_name: str, last_name: str, **extra_fields):
+        extra_fields.setdefault('is_student', True)
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        
+        extra_fields['first_name'] = first_name
+        extra_fields['second_name'] = second_name
+        extra_fields['last_name'] = last_name
+        
+        return self._create_user(username=email, email=email,
+                                 password=password, **extra_fields)
+    
     def create_superuser(self, email: str, username: str = None,
                          password: str = None, **extra_fields):
         if username is None:

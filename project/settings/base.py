@@ -87,7 +87,12 @@ DATABASES = {
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOSTNAME'),
         'PORT': os.environ.get('DB_PORT'),
-    }
+        'TEST': {
+            'NAME': 'testdatabase',
+        },
+    },
+    
+    
 }
 
 # Password validation

@@ -9,3 +9,6 @@ Mini test task with Django 3.
 1. ```docker-compose up```
 1. ```./manage.py migrate```
 1. ```./manage.py collectstatic --no-input``` twice
+
+##For start test 
+```./manage.py test  --no-input --keepdb```

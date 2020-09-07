@@ -2,7 +2,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from .serializers import TokenSerializer
+from authorization.serializers import TokenSerializer
 
 
 class LoginWithToken(ObtainAuthToken):
