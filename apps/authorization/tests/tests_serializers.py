@@ -6,10 +6,9 @@ from utils.tests import student_test as user
 
 
 class TestAuthenticate(TestCase):
-    
+    """Test method authenticate"""
     @classmethod
     def setUpTestData(cls):
-        """Load initial data for the TestCase."""
         test_user = User.objects.create_student(email=user.email,
                                                 password=user.password,
                                                 first_name=user.first_name,
