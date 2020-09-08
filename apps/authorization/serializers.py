@@ -5,6 +5,7 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 
 from account.models import User
+from utils.serializers import PasswordMixin
 
 
 def authenticate(**credentials) -> Optional[User]:
@@ -19,17 +20,12 @@ def authenticate(**credentials) -> Optional[User]:
     return None
 
 
-class TokenSerializer(serializers.Serializer):
+class TokenSerializer(serializers.Serializer, PasswordMixin):
     """Token serializer.
     Validate email and password and return token"""
     
     token = serializers.CharField(label=_("token"), read_only=True)
     email = serializers.CharField(label=_("email"))
-    password = serializers.CharField(
-        label=_("password"),
-        style={'input_type': 'password'},
-        trim_whitespace=False, write_only=True
-    )
     
     def validate(self, attrs):
         email = attrs.get('email')

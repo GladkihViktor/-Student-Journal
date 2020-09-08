@@ -1,7 +1,9 @@
 from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+from account.serializers import UserSerializer
 from authorization.serializers import TokenSerializer
 
 
@@ -19,3 +21,9 @@ class LoginWithToken(ObtainAuthToken):
                                            context={'request': request})
         serializer.is_valid(raise_exception=True)
         return Response(data=serializer.data)
+
+
+class SigInView(CreateAPIView):
+    """Sig in view"""
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
