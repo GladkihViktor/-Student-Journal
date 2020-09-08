@@ -1,15 +1,16 @@
-from django.test import RequestFactory, TestCase
+from django.urls import reverse
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.test import APITestCase
 
 from account.models import User
-from authorization.views import LoginWithToken, SigInView
 from utils.tests import student2_test as user2, student_test as user
 
 
-class TestAuthorization(TestCase):
+class TestAuthorization(APITestCase):
     """Test Authorization views"""
     
     def setUp(self):
-        self.factory = RequestFactory()
         self.user = User.objects.create_student(email=user.email,
                                                 password=user.password,
                                                 first_name=user.first_name,
@@ -19,9 +20,9 @@ class TestAuthorization(TestCase):
     def test_login(self):
         test = {'email': user.email,
                 'password': user.password}
-        request = self.factory.post('api/authorization/login/', data=test)
-        response = LoginWithToken.as_view()(request)
-        self.assertEqual(response.status_code, 200)
+        url = reverse('api:authorization:login-with-token')
+        response = self.client.post(url, data=test)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
     
     def test_sigin(self):
         test = {'email': user2.email,
@@ -30,9 +31,9 @@ class TestAuthorization(TestCase):
                 'second_name': user2.second_name,
                 'last_name': user2.last_name,
                 'birthday': user2.birthday}
-        request = self.factory.post('api/authorization/sigin/', data=test)
-        response = SigInView.as_view()(request)
-        self.assertEqual(response.status_code, 201)
+        url = reverse('api:authorization:sig-in')
+        response = self.client.post(url, data=test)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
     
     def test_sigin_exists(self):
         test = {'email': user.email,
@@ -41,6 +42,14 @@ class TestAuthorization(TestCase):
                 'second_name': user.second_name,
                 'last_name': user.last_name,
                 'birthday': user.birthday}
-        request = self.factory.post('api/authorization/sigin/', data=test)
-        response = SigInView.as_view()(request)
-        self.assertEqual(response.status_code, 400)
+        url = reverse('api:authorization:sig-in')
+        response = self.client.post(url, data=test)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+    
+    def test_logout(self):
+        token, created = Token.objects.get_or_create(user=self.user)
+        http_authorization = 'Token {}'.format(token)
+        
+        url = reverse('api:authorization:logout')
+        response = self.client.post(url, HTTP_AUTHORIZATION=http_authorization)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

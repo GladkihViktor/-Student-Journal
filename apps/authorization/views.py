@@ -1,5 +1,6 @@
+from django.contrib.auth import logout
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -9,7 +10,7 @@ from authorization.serializers import TokenSerializer
 
 class LoginWithToken(ObtainAuthToken):
     """Login with token view.
-    Check creds and return token for user.
+    Check credentials and return token for user.
     
     For login send email and password.
     """
@@ -27,3 +28,11 @@ class SigInView(CreateAPIView):
     """Sig in view"""
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
+
+class LogoutView(GenericAPIView):
+    """Logout view"""
+    
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return Response()

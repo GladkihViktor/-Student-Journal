@@ -1,5 +1,6 @@
 """Project urls."""
 import os
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -9,7 +10,7 @@ from project.urls import api, docs
 
 urlpatterns = [
     path('api/', include((api.urlpatterns, 'api')), name='api'),
-    path('', include(docs))
+    path('', include(docs), name='docs')
 ]
 
 if os.environ.get('SETTINGS_CONFIGURATION') != 'production':
