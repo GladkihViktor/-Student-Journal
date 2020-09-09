@@ -33,13 +33,15 @@ DJANGO_APPS = ['django.contrib.admin',
                ]
 
 EXTERNAL_APPS = [
+    'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
 ]
 
 PROJECT_APPS = [
     'account',
-    'authorization'
+    'authorization',
+    'journal'
 ]
 
 # Application definition
@@ -176,3 +178,26 @@ REST_FRAMEWORK = {
 TEMPLATE_LOADERS = (
     'django.template.loaders.eggs.Loader',
 )
+
+
+LOGGING = {
+    'version': 1,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+        }
+    }
+}

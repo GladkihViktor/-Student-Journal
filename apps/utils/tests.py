@@ -36,3 +36,11 @@ student2_test = UserData(email='test2@gmai.com',
                          last_name='Test last name2',
                          birthday=date(1993, 3, 11)
                          )
+
+teacher_test = UserData(email='teacher@gmai.com',
+                        password='teacher',
+                        first_name='Teacher name',
+                        second_name='Teacher second name',
+                        last_name='Teacher last name',
+                        birthday=date(1983, 2, 1)
+                        )

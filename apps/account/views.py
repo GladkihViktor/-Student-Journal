@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.generics import ListCreateAPIView
 
-# Create your views here.
+from account.models import User
+from account.permissions import UserPermission
+from account.serializers import UserSerializer
+
+
+class UserList(ListCreateAPIView):
+    queryset = User.objects.available()
+    serializer_class = UserSerializer
+    permission_classes = (UserPermission,)
