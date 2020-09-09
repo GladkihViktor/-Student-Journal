@@ -36,7 +36,7 @@ class Journal(BaseMixin):
     
     program = models.ForeignKey('Program', on_delete=models.PROTECT,
                                 verbose_name=_('Program'))
-    student = models.ForeignKey('account.User', on_delete=models.PROTECT,
+    student = models.ForeignKey('account.User', on_delete=models.CASCADE,
                                 verbose_name=_('Student'))
     value = models.IntegerField(choices=VALUE_CHOICES, null=False,
                                 blank=False, verbose_name=_('Value'))
