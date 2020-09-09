@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
 from account.models import User
-from utils.tests import student2_test as user2, student_test as user
+from utils.tests import student2_test as student, student_test as user
 
 
 class TestAuthorization(APITestCase):
@@ -25,12 +25,12 @@ class TestAuthorization(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
     
     def test_sigin(self):
-        test = {'email': user2.email,
-                'password': user2.password,
-                'first_name': user2.first_name,
-                'second_name': user2.second_name,
-                'last_name': user2.last_name,
-                'birthday': user2.birthday}
+        test = {'email': student.email,
+                'password': student.password,
+                'first_name': student.first_name,
+                'second_name': student.second_name,
+                'last_name': student.last_name,
+                'birthday': student.birthday}
         url = reverse('api:authorization:sig-in')
         response = self.client.post(url, data=test)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
