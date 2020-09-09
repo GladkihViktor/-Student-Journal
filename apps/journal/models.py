@@ -16,7 +16,7 @@ class Program(BaseMixin):
         verbose_name = _('Program')
         verbose_name_plural = _('Programs')
 
-
+#TODO: Может добавлять только пользователь teacher
 class Journal(BaseMixin):
     """Journal for the records students rating."""
     
