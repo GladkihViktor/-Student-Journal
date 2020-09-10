@@ -3,8 +3,8 @@ from django.test import TestCase
 
 from account.models import User
 from journal.models import Journal, Program
-from utils.tests import program_test, program_test2, student2_test as \
-    student2, student_test as student
+from utils.tests import (program_test, program_test2, student2_test as student2,
+                         student_test as student)
 
 
 class TestJournal(TestCase):

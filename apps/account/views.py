@@ -1,5 +1,5 @@
-from rest_framework.generics import ListCreateAPIView, \
-    RetrieveUpdateDestroyAPIView
+from rest_framework.generics import (ListCreateAPIView,
+                                     RetrieveUpdateDestroyAPIView)
 from rest_framework.pagination import LimitOffsetPagination
 
 from account.models import User

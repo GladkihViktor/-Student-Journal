@@ -4,8 +4,9 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
 from account.models import User
-from utils.tests import student2_test as user2, student_test as user, \
-    teacher_test as teacher
+from utils.tests import (student2_test as user2,
+                         student_test as user,
+                         teacher_test as teacher)
 
 
 class TestAuthorization(APITestCase):

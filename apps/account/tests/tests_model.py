@@ -1,11 +1,12 @@
 from django.test import TestCase
 
 from account.models import User
-from utils.tests import superuser_test as su, student_test as student, \
-    teacher_test
+from utils.tests import (student_test as student, superuser_test as su,
+                         teacher_test)
 
 
 class TestUser(TestCase):
+    
     @classmethod
     def setUpTestData(cls):
         """Load initial data for the TestCase."""
@@ -31,7 +32,7 @@ class TestUser(TestCase):
             self.assert_(True)
         else:
             self.assert_(False)
-            
+    
     def test_superuser(self):
         usr = User.objects.active_by_email(email=su.email).first()
         if usr.is_staff is True and usr.is_superuser is True:
