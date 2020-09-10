@@ -17,6 +17,7 @@ The student has the following fields:
 * PostgreSQL 12
 
 ## For start project
+1. ```docker-comopose up db``` stop then 
 1. ```docker-compose up```
 1. ```./manage.py migrate```
 1. ```./manage.py collectstatic --no-input``` twice
