@@ -9,3 +9,9 @@ class PasswordMixin(metaclass=serializers.SerializerMetaclass):
         style={'input_type': 'password'},
         trim_whitespace=False, write_only=True
     )
+
+
+class BaseMixin(metaclass=serializers.SerializerMetaclass):
+    """Base mixin"""
+    created = serializers.DateTimeField(label=_('created'), read_only=True)
+    modified = serializers.DateTimeField(label=_('modified'), read_only=True)

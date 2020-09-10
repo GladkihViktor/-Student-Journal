@@ -4,5 +4,6 @@ from django.urls import include, path
 urlpatterns = [
     path('authorization/',
          include(('authorization.urls', 'authorization'))),
-    path('account/', include(('account.urls', 'account')))
+    path('account/', include(('account.urls', 'account'))),
+    path('journal/', include(('journal.urls', 'journal')))
 ]

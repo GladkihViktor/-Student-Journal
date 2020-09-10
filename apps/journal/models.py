@@ -4,6 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 from utils.models import BaseMixin
 
 
+class ProgramQuerySet(models.QuerySet):
+    
+    def available(self) -> models.QuerySet:
+        return self.filter(is_active=True)
+
+
 class Program(BaseMixin):
     """Training program."""
     name = models.CharField(max_length=256, null=False, blank=False,
@@ -11,12 +17,15 @@ class Program(BaseMixin):
     is_active = models.BooleanField(default=True, blank=False, null=False,
                                     verbose_name=_('Is active'))
     
+    objects = models.Manager.from_queryset(ProgramQuerySet)()
+    
     
     class Meta:
         verbose_name = _('Program')
         verbose_name_plural = _('Programs')
 
-#TODO: Может добавлять только пользователь teacher
+
+# TODO: Может добавлять только пользователь teacher
 class Journal(BaseMixin):
     """Journal for the records students rating."""
     
