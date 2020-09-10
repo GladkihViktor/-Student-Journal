@@ -1,0 +1,149 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-10 22:54+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps/account/models.py:69
+msgid "Email address"
+msgstr "Email адрес"
+
+#: apps/account/models.py:71
+msgid "Second name"
+msgstr "Отчество"
+
+#: apps/account/models.py:72
+msgid "Is student"
+msgstr "Студент?"
+
+#: apps/account/models.py:74
+msgid "Is teacher"
+msgstr "Учитель?"
+
+#: apps/account/models.py:77
+msgid "Birthday"
+msgstr "День рожденья"
+
+#: apps/authorization/serializers.py:27
+msgid "token"
+msgstr "токен"
+
+#: apps/authorization/serializers.py:28
+msgid "email"
+msgstr "Email адрес"
+
+#: apps/authorization/serializers.py:39
+msgid "Unable to log in with provided credentials."
+msgstr "Невозможно войти в систему с предоставленными учетными данными."
+
+#: apps/authorization/serializers.py:42
+msgid "Must include \"email\" and \"password\"."
+msgstr "Должно быть \"email\" и \"пароль\"."
+
+#: apps/journal/filters.py:12
+msgid "student"
+msgstr "студент"
+
+#: apps/journal/filters.py:23
+msgid "program"
+msgstr "программа"
+
+#: apps/journal/filters.py:34
+msgid "value"
+msgstr "оценка"
+
+#: apps/journal/models.py:17
+msgid "name"
+msgstr "название"
+
+#: apps/journal/models.py:19
+msgid "Is active"
+msgstr "Активно?"
+
+#: apps/journal/models.py:25 apps/journal/models.py:59
+msgid "Program"
+msgstr "Программа"
+
+#: apps/journal/models.py:26
+msgid "Programs"
+msgstr "Программы"
+
+#: apps/journal/models.py:51
+msgid "Very bad"
+msgstr "Очень плохо"
+
+#: apps/journal/models.py:52
+msgid "Bad"
+msgstr "Плохо"
+
+#: apps/journal/models.py:53
+msgid "Normal"
+msgstr "Нормально"
+
+#: apps/journal/models.py:54
+msgid "Good"
+msgstr "Хорошо"
+
+#: apps/journal/models.py:55
+msgid "Excellent"
+msgstr "Отлично"
+
+#: apps/journal/models.py:61
+msgid "Student"
+msgstr "Студент"
+
+#: apps/journal/models.py:63
+msgid "Value"
+msgstr "Оценка"
+
+#: apps/journal/models.py:79
+msgid "Journal"
+msgstr "Журнал"
+
+#: apps/journal/models.py:80
+msgid "Journals"
+msgstr "Журналы"
+
+#: apps/utils/models.py:11
+msgid "Date created"
+msgstr "Дата создания"
+
+#: apps/utils/models.py:13
+msgid "Date updated"
+msgstr "Дата обновления"
+
+#: apps/utils/serializers.py:8
+msgid "password"
+msgstr "пароль"
+
+#: apps/utils/serializers.py:16
+msgid "created"
+msgstr "создано"
+
+#: apps/utils/serializers.py:17
+msgid "modified"
+msgstr "изменено"
+
+#: project/settings/base.py:129
+msgid "English"
+msgstr "Английский"
+
+#: project/settings/base.py:130
+msgid "Russian"
+msgstr "Русский"
