@@ -13,7 +13,6 @@ class ProgramSerializer(BaseMixin, ModelSerializer):
         fields = ('id', 'name', 'is_active', 'created', 'modified')
 
 
-# TODO: Add methods for update and create journal records
 class JournalSerializer(ModelSerializer):
     """Journal serializer"""
     

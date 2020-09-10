@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -25,7 +26,18 @@ class Program(BaseMixin):
         verbose_name_plural = _('Programs')
 
 
-# TODO: Add validate student(active) and program(active)
+class JournalQuerySet(models.QuerySet):
+    
+    def by_student_id(self, student_id: int) -> models.QuerySet:
+        return self.filter(student_id=student_id)
+    
+    def by_program_id(self, program_id: int) -> models.QuerySet:
+        return self.filter(program_id=program_id)
+    
+    def by_value(self, value: int) -> models.QuerySet:
+        return self.filter(value=value)
+
+
 class Journal(BaseMixin):
     """Journal for the records students rating."""
     
@@ -49,6 +61,18 @@ class Journal(BaseMixin):
                                 verbose_name=_('Student'))
     value = models.IntegerField(choices=VALUE_CHOICES, null=False,
                                 blank=False, verbose_name=_('Value'))
+    
+    objects = models.Manager.from_queryset(JournalQuerySet)()
+    
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if self.program.is_active is False:
+            raise ValidationError("Program is not available.", "program")
+        if self.student.is_active is False or self.student.is_student is False:
+            raise ValidationError("Student is not available.", "student")
+        
+        super(Journal, self).save(force_insert, force_update,
+                                  using, update_fields)
     
     
     class Meta:
