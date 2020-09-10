@@ -1,6 +1,17 @@
 # Student-Journal
 Mini test task with Django 3.
 
+REST API for a client application that should display a page with a list of 
+students with the following capabilities: 
+1. Add a new student to this list. 
+1. Delete an existing student. 
+1. Edit an existing student. 
+
+The student has the following fields: 
+* Full name. 
+* Date of birth. 
+* Academic.
+ 
 ## System requirements: 
 * Python 3.8
 * PostgreSQL 12
