@@ -44,3 +44,12 @@ teacher_test = UserData(email='teacher@gmai.com',
                         last_name='Teacher last name',
                         birthday=date(1983, 2, 1)
                         )
+
+
+@dataclass
+class ProgramData:
+    name: str
+
+
+program_test = ProgramData(name='Test program')
+program_test2 = ProgramData(name='Test program 2')
