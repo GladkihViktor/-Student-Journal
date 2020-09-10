@@ -25,7 +25,7 @@ class Program(BaseMixin):
         verbose_name_plural = _('Programs')
 
 
-# TODO: Может добавлять только пользователь teacher
+# TODO: Add validate student(active) and program(active)
 class Journal(BaseMixin):
     """Journal for the records students rating."""
     
